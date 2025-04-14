@@ -1,0 +1,48 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-added-large-files
+        args: ['--maxkb=5000']
+    -   id: detect-private-key
+    -   id: check-yaml
+        exclude: ^buildspec/|^helm/
+-   repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+    -   id: black
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+    -   id: isort
+        args: ["--profile", "black"]
+-   repo: https://github.com/PyCQA/autoflake
+    rev: v2.2.1
+    hooks:
+    -   id: autoflake
+-   repo: local
+    hooks:
+    -   id: pytest
+        name: pytest
+        entry: pytest tests/
+        language: system
+        types: [python]
+        pass_filenames: false
+-   repo: local
+    hooks:
+    -   id: pylint
+        name: pylint
+        entry: pylint mmdit/
+        language: system
+        types: [python]
+        pass_filenames: false
+-   repo: local
+    hooks:
+    -   id: mypy
+        name: mypy
+        entry: mypy mmdit/
+        language: system
+        types: [python]
+        pass_filenames: false
