@@ -2,7 +2,7 @@
 
 **MMDiT-PyTorch** is a lightweight and standalone PyTorch implementation of a single block from the **Multimodal Diffusion Transformer (MMDiT)**, originally proposed in [*Scaling Rectified Flow Transformers for High-Resolution Image Synthesis*](https://arxiv.org/abs/2403.03206).
 
-<img src="assets/mmdit.png" alt="MMDiT Architecture" width="400"/>
+<div align="center"><img src="https://raw.githubusercontent.com/KennyStryker/mmdit-pytorch/refs/heads/main/assets/mmdit.png" alt="MMDiT Architecture" width="400"/></div>
 
 This project focuses on simplicity and minimal dependencies to allow easy understanding and extensibility for research and experimentation.
 
