@@ -41,18 +41,34 @@ poetry install
 Make sure you have Python 3.12+ and [Poetry](https://python-poetry.org/) installed.
 
 ```python
-from mmdit import MMDiTBlock
 import torch
+from mmdit import MMDiTBlock
 
-# Example input
-x = torch.randn(1, 16, 768)  # (batch_size, sequence_length, dim)
+# Set embedding dimensions for each modality
+dim_txt = 768         # Dimension of text embeddings
+dim_img = 512         # Dimension of image embeddings
+dim_timestep = 256    # Dimension of timestep embeddings (e.g., for conditioning)
 
-# Initialize a single MMDiT block
-block = MMDiTBlock(dim=768, num_heads=12)
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-# Forward pass
-out = block(x)
-print(out.shape)  # -> torch.Size([1, 16, 768])
+# Initialize the multimodal transformer block
+mmdit_block = MMDiTBlock(
+    dim_txt=dim_txt,
+    dim_img=dim_img,
+    dim_timestep=dim_timestep,
+    qk_rmsnorm=True  # Use RMSNorm on query/key in attention (optional setting)
+).to(device)
+
+# Generate random embeddings for demonstration
+txt_emb = torch.randn(1, 512, dim_txt).to(device)
+img_emb = torch.randn(1, 1024, dim_img).to(device)
+time_emb = torch.randn(1, dim_timestep).to(device)
+
+# Forward pass through the multimodal transformer block
+txt_out, img_out = mmdit_block(txt_emb, img_emb, time_emb)
+
+print(f"Text output shape: {txt_out.shape}")
+print(f"Image output shape: {img_out.shape}")
 ```
 
 ---
