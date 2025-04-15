@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mmdit-pytorch"
-version = "0.1.0"
+version = "0.2.1"
 description = "A standalone implementation of a single block of Multimodal Diffusion Transformer (MMDiT) originally proposed in Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (https://arxiv.org/abs/2403.03206) in PyTorch with minimal dependencies."
 authors = ["Kenny Stryker <nggkenny@gmail.com>"]
 license = "MIT"
@@ -9,7 +9,7 @@ packages = [
     { include = "mmdit" },
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
