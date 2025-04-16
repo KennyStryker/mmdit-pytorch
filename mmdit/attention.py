@@ -1,7 +1,6 @@
 """Implementation of the JointAttention for two modalities."""
 
 # pylint: disable=not-callable
-# type: ignore[assignment]
 
 from typing import Tuple
 
@@ -120,7 +119,10 @@ class JointAttention(nn.Module):
             merged[:, c_len : c_len + x_len, :],
         )
 
+        # Post attention of c
         c_post_attn_linear = self.post_attn_txt_linear(c_merged_out)
+
+        # Post attention of x
         x_post_attn_linear = self.post_attn_img_linear(x_merged_out)
 
         return c_post_attn_linear, x_post_attn_linear

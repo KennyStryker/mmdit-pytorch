@@ -52,7 +52,7 @@ class MLP(nn.Module):
 
         self.mlp = nn.Sequential(
             nn.Linear(input_dim, input_dim),
-            nn.SiLU(),
+            nn.GELU(approximate="tanh"),
             nn.Linear(input_dim, input_dim),
         )
 
